@@ -23,7 +23,7 @@ pipeline{
         }
         stage('Build Docker Image') {
               steps {
-                sh 'docker build -t sraj21/spemajor-backend.'
+                sh 'docker build -t sraj21/spemajor-backend . '
               }
             }
         stage('Login into DockerHub') {
