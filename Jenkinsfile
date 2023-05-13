@@ -41,12 +41,7 @@ pipeline{
                     sh 'docker rmi sraj21/spemajor-backend'
                 }
             }
-        stage("Ansible Deploy"){
-            steps{
-//                 ansiblePlaybook colorized: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory', playbook: 'plybk.yml'
-                    sh "ansible-playbook -i inventory playbook.yml"
-            }
-        }
+        
         
     }
 }
