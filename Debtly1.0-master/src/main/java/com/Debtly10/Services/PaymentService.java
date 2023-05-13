@@ -72,8 +72,6 @@ public class PaymentService {
         float temp= mortgage.getLeftAmount();
         float newAmount = temp + interest;
         return newAmount ;
-
-
     }
 
 

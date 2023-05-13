@@ -93,6 +93,7 @@ public class MortgageService {
                     mortgage.getIssueDate(),
                     mortgage.getLastPaid(),
                     mortgage.getInterestRate(),
+                    mortgage.getId(),
                     mortgage.getCustomer().getId(),
                     mortgage.getCustomer().getFirstName(),
                     mortgage.getCustomer().getLastName()

@@ -21,6 +21,7 @@ public class MortgageFetchDTO {
     private float interestRate;
 
     private Long cid;
+    private Long mid;
     private String customerFirstName;
     private String customerLastName;
 
@@ -55,7 +56,9 @@ public class MortgageFetchDTO {
     public Long getCid() {
         return cid;
     }
-
+    public Long getMid() {
+        return mid;
+    }
     public String getCustomerFirstName() {
         return customerFirstName;
     }
@@ -72,6 +75,7 @@ public class MortgageFetchDTO {
                             Date lastPaid,
                             float interestRate,
                             Long cid,
+                            Long mid,
                             String customerFirstName,
                             String customerLastName) {
         this.productName = productName;
@@ -81,6 +85,7 @@ public class MortgageFetchDTO {
         this.issueDate = issueDate;
         this.lastPaid = lastPaid;
         this.interestRate = interestRate;
+        this.mid = mid;
         this.cid = cid;
         this.customerFirstName = customerFirstName;
         this.customerLastName = customerLastName;
