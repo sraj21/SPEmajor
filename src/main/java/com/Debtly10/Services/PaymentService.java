@@ -1,5 +1,7 @@
 package com.Debtly10.Services;
 
+import com.Debtly10.DTOS.MortgageFetchDTO;
+import com.Debtly10.DTOS.PaymentFetchDTO;
 import com.Debtly10.DTOS.PaymentRegistrationDTO;
 import com.Debtly10.Repository.MortgageRepository;
 import com.Debtly10.Repository.PaymentRepository;
@@ -9,6 +11,7 @@ import com.Debtly10.models.Payment;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.time.LocalDate;
@@ -49,8 +52,44 @@ public class PaymentService {
         return " payment added successfully" + diffDays;
     }
 
-    public List<Payment> getAllPayment() {
-        return paymentRepository.findAll();
+    public List<PaymentFetchDTO> getAllPayment() {
+        List<Payment> payments = paymentRepository.findAll();
+        List<PaymentFetchDTO> dto = new ArrayList<>();
+        for (Payment payment : payments) {
+            dto.add(new PaymentFetchDTO(
+                    payment.getMortgage().getProductName(),
+                    payment.getMortgage().getGivenAmount(),
+                    payment.getMortgage().getLeftAmount(),
+                    payment.getMortgage().getInterestRate(),
+                    payment.getMortgage().getId(),
+                    payment.getMortgage().getCustomer().getId(),
+                    payment.getMortgage().getCustomer().getFirstName(),
+                    payment.getMortgage().getCustomer().getLastName(),
+                    payment.getAmount(),
+                    payment.getDate()
+            ));
+        }
+        return dto;
+    }
+    public List<MortgageFetchDTO> getAllMortgage() {
+        List<Mortgage> mortgages = mortgageRepository.findAll();
+        List<MortgageFetchDTO> dto = new ArrayList<>();
+        for (Mortgage mortgage : mortgages) {
+            dto.add(new MortgageFetchDTO(
+                    mortgage.getProductName(),
+                    mortgage.getMarketValue(),
+                    mortgage.getGivenAmount(),
+                    mortgage.getLeftAmount(),
+                    mortgage.getIssueDate(),
+                    mortgage.getLastPaid(),
+                    mortgage.getInterestRate(),
+                    mortgage.getId(),
+                    mortgage.getCustomer().getId(),
+                    mortgage.getCustomer().getFirstName(),
+                    mortgage.getCustomer().getLastName()
+            ));
+        }
+        return dto;
     }
 
     public void deletePayment(Long pid) {

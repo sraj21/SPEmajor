@@ -1,6 +1,7 @@
 package com.Debtly10.controller;
 
 import com.Debtly10.DTOS.MortgageRegistrationDTO;
+import com.Debtly10.DTOS.PaymentFetchDTO;
 import com.Debtly10.DTOS.PaymentRegistrationDTO;
 import com.Debtly10.Services.PaymentService;
 import com.Debtly10.models.Mortgage;
@@ -30,7 +31,7 @@ public class paymentController {
     }
 
     @GetMapping("/get_payments")
-    public List<Payment> getPayments(){
+    public List<PaymentFetchDTO> getPayments(){
         logger.info("[Retrieving all payments]");
         return paymentService.getAllPayment();
     }
